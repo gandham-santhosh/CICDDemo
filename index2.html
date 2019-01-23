@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step progress bar - css</title>
+    <meta chartset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        * {
+			box-sizing: border-box;
+		}
+		body {
+            font-family: 'Alegreya Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @media screen and (min-width: 768px) {
+            .banner-container-top {
+                display: block;
+            }
+            .banner-container-bottom {
+                display: none;
+            }
+            .desktop-ad {
+                display: block;
+            }            
+            .mobile-ad {
+                display: none;
+            }
+        }
+        .title {
+            text-align: center;
+            margin: 0 0 80px 0;
+        }
+        .back-to-article a {
+            color: #55b776;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .ad {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            width: 170px;
+            border: 1px solid #ddd;
+        }
+        .ad .close {
+            position: absolute;
+            right: 5px;
+            color: #999;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .ad .close:hover {
+            opacity: 0.7;
+        }
+        #carbonads {
+          display: block;
+          overflow: hidden;
+          padding: 1em;
+          font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
+          line-height: 1.5;
+        }
+
+          #carbonads span {
+            display: block;
+            overflow: hidden;
+          }
+
+          .carbon-text {
+            display: block;
+            margin-bottom: 1em;
+            text-align: left;
+            font-size: 10px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+          }
+
+          .carbon-img {
+            display: block;
+            margin: 0 auto 1em;
+            text-align: center;
+          }
+
+          .carbon-poweredby {
+            display: block;
+            text-align: right;
+            font-size: 10px;
+            color: #fa7d6d;
+            text-decoration: none;
+          }
+        @media screen and (max-width: 768px) {
+            .ad {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        $(function() {
+            $('.close').click(function() {
+                $('.ad').hide();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="ad">
+        <i class="ion-android-close close"></i>
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=kodhuscom" id="_carbonads_js"></script>
+    </div>
+<div class="container">
+    <div class="title">
+        <span class="back-to-article"><a href="http://www.kodhus.com/css-only-step-progress-bar/"> Back to article</a> / <a href="http://kodhus.com/library/notification-panel-vertical-timeline/#">Next Demo <i class="ion-arrow-right-c"></i></a></span> 
+        <h2>Step progress bar</h2>    
+    </div>
+    
+    <div class='row'>
+        <ul class="progressbar">
+        <li class="active">login</li>
+        <li>choose interest</li>
+        <li>add friends</li>
+        <li>View map</li>
+    </ul>
+    </div>
+    
+</div>
+</body>
+</html>

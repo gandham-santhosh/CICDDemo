@@ -1,0 +1,108 @@
+'user strict';
+var sql = require('./db.js');
+
+//Task object constructor
+var Task = function(task){
+    this.task = task.task;
+    this.status = task.status;
+    this.created_at = new Date();
+};
+Task.createTask = function createUser(newTask, result) {    
+        sql.query("INSERT INTO tasks set ?", newTask, function (err, res) {
+                
+                if(err) {
+                    console.log("error: ", err);
+                    result(err, null);
+                }
+                else{
+                    console.log(res.insertId);
+                    result(null, res.insertId);
+                }
+            });           
+};
+Task.getTaskById = function createUser(taskId, result) {
+        sql.query("Select task from tasks where id = ? ", taskId, function (err, res) {             
+                if(err) {
+                    console.log("error: ", err);
+                    result(err, null);
+                }
+                else{
+                    result(null, res);
+              
+                }
+            });   
+};
+
+Task.updateById = function(id, task, result){
+  sql.query("UPDATE tasks SET task = ? WHERE id = ?", [task.task, id], function (err, res) {
+          if(err) {
+              console.log("error: ", err);
+                result(null, err);
+             }
+           else{   
+             result(null, res);
+                }
+            }); 
+};
+Task.remove = function(id, result){
+     sql.query("DELETE FROM tasks WHERE id = ?", [id], function (err, res) {
+
+                if(err) {
+                    console.log("error: ", err);
+                    result(null, err);
+                }
+                else{
+               
+                 result(null, res);
+                }
+            }); 
+};
+
+module.exports= Task;
+
+//cicd object
+var Cicd = function(stage) {
+    this.stage = stage.stage;
+};
+Task.getAllTask = function getAllTask(result) {
+    sql.query("Select * from tasks", function (err, res) {
+
+            if(err) {
+                console.log("error: ", err);
+                result(null, err);
+            }
+            else{
+              console.log('tasks : ', res);  
+
+             result(null, res);
+            }
+        });   
+};
+Cicd.getList = function getList(result) {
+    
+    sql.query("select * from stages", function (err, res){
+        if(err) {
+            console.log("error: ", err);
+              result(null, err);
+           }
+         else{   
+            console.log('rows : ', res);  
+              result(null, res);
+              }
+          }); 
+    };
+
+    Cicd.updateStatus = function updateStatus(stage, result) {
+        console.log("stage val: ",stage);
+        sql.query("UPDATE stages set "+stage+" = ? ", 0, function (err, res){
+            if(err) {
+                console.log("error: ", err);
+                  result(null, err);
+               }
+             else{   
+               result(null, res);
+                  }
+              }); 
+        };
+
+module.exports = Cicd;
