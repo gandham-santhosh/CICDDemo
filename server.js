@@ -35,3 +35,10 @@ function add (a, b) {
 
 var expected = add(1,2);
 assert( expected === 3, 'one plus two is three');
+
+
+var path = require("path");
+
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+	});

@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step progress bar - css</title>
+    <meta chartset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script>
+setInterval(function() {
+  // method to be executed;
+   loadDoc();
+}, 5000);
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange=function() {
+    if (this.readyState == 4 && this.status == 200) {
+	console.log("this is success "+this.responseText);
+	    var obj = JSON.parse(this.responseText);
+	    var finalStage = 0;
+	    for (var key in obj) {
+ 		 console.log(key, obj[key]);
+		  finalStage = key;
+	    document.getElementById(finalStage).className = 'active' ;
+		 if(obj[key] == 0)
+		    break;
+             }
+	    console.log("final stage: "+finalStage);
+      //document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://localhost:3000/getList", true);
+  xhttp.send();
+}
+</script>
+    <style type="text/css">
+        * {
+			box-sizing: border-box;
+		}
+		body {
+            font-family: 'Alegreya Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        @media screen and (min-width: 768px) {
+            .banner-container-top {
+                display: block;
+            }
+            .banner-container-bottom {
+                display: none;
+            }
+            .desktop-ad {
+                display: block;
+            }            
+            .mobile-ad {
+                display: none;
+            }
+        }
+        .title {
+            text-align: center;
+            margin: 0 0 80px 0;
+        }
+        .back-to-article a {
+            color: #55b776;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .ad {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            width: 170px;
+            border: 1px solid #ddd;
+        }
+        .ad .close {
+            position: absolute;
+            right: 5px;
+            color: #999;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .ad .close:hover {
+            opacity: 0.7;
+        }
+        #carbonads {
+          display: block;
+          overflow: hidden;
+          padding: 1em;
+          font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
+          line-height: 1.5;
+        }
+
+          #carbonads span {
+            display: block;
+            overflow: hidden;
+          }
+
+          .carbon-text {
+            display: block;
+            margin-bottom: 1em;
+            text-align: left;
+            font-size: 10px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+          }
+
+          .carbon-img {
+            display: block;
+            margin: 0 auto 1em;
+            text-align: center;
+          }
+
+          .carbon-poweredby {
+            display: block;
+            text-align: right;
+            font-size: 10px;
+            color: #fa7d6d;
+            text-decoration: none;
+          }
+        @media screen and (max-width: 768px) {
+            .ad {
+                display: none;
+            }
+        }
+
+    </style>
+
+    <style>
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+header {
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 2.5)
+    ),
+    url(http://localhost/devcon/devops-process2.png);
+  background-size: cover;
+  height: 100vh;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+h1 {
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 3rem;
+  white-space: nowrap;
+}
+h2 {
+  font-size: 2rem;
+}
+p {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+main {
+  max-width: 500px;
+  margin: 20px auto;
+}
+</style>
+
+</head>
+<body>
+<header>
+</header>
+
+<div class="container">
+  <div class="title">
+        <h2>Life of a Commit</h2>    
+    <div id='demo' name='demo'> </div> 
+    <div class='row'>
+        <ul class="progressbar">
+        <li class="active" id='stage1'>Code Commit</li>
+        <li  id='stage2'>Continuous Integration</li>
+        <li id='stage3'>Unit Test Cases</li>
+        <li id='stage4'>Code Quality</li>
+        <li id='stage5'>Merge</li>
+        <li id='stage6' >Build</li>
+        <li id='stage7'>Deploy</li>
+    </ul>
+    </div>
+  </div>
+    
+</div>
+</body>
+</html>
